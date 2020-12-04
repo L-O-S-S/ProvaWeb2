@@ -1,0 +1,38 @@
+﻿@model ExEncript.Models.TextoModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Detalhes do Texto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Mensagem Encriptada: ")
+        </dt>
+
+        <dd>
+            @{
+                var msgEnc = TempData["msgEnc"].ToString();
+
+                @Html.Label(msgEnc);
+            }
+        </dd>
+        <dt>
+            @Html.Label("Mensagem Decriptada: ")
+        </dt>
+
+        <dd>
+            @{
+                var msgDec = TempData["msgDec"].ToString();
+
+                @Html.Label(msgDec);
+            }
+        </dd>
+
+    </dl>
+</div>
+

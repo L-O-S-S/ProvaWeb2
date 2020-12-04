@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ExEncript.Models.TextoModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<br />
+<h2>Textos</h2>
+<br />
+<div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800"></h1>
+    <p class="mb4">Lista de Textos</p>
+
+    <p>
+
+
+        <!-- DATATABLE-->
+
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Produtos</h6>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" id="sisDataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th scope="col">@Html.DisplayNameFor(model => model.Mensagem)</th>
+
+                                <th scope="col">Funções</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Mensagem)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </p>
+
+</div>
+
+
+
+

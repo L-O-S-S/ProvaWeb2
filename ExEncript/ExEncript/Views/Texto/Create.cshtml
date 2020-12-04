@@ -1,0 +1,65 @@
+﻿@model ExEncript.Models.TextoModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>TextoModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.Mensagem, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+                    if (TempData["msgDecript"] != null)
+                    {
+                        string msgDecript = TempData["msgDecript"].ToString();
+                        @Html.Label(msgDecript.ToString());
+
+                    }
+                    else
+                    {
+                        @Html.EditorFor(model => model.Mensagem, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Mensagem, "", new { @class = "text-danger" })
+                    }
+                }
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @{
+                    if (TempData["msgEncript"] == null)
+                    {
+                        <input type="submit" value="Enviar" class="btn btn-default" />
+                    }
+                }
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @{
+                if (TempData["msgEncript"] != null)
+                {
+                    var msgEncript = TempData["msgEncript"].ToString();
+                    @Html.Label("Texto Encriptado: " + msgEncript);
+                }
+
+
+            }
+
+        </div>
+    </div>
+}
+
+
